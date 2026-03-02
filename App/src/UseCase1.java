@@ -16,7 +16,7 @@
         }
 
         // Step 3: Display the result on the console
-        System.out.println("Input text: " + input);
+        System.out.println("Input   text: " + input);
         System.out.println("Is it a Palindrome? : " + isPalindrome);
     }
 }
