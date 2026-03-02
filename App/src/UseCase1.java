@@ -1,33 +1,34 @@
 
-    class UseCase4 {
+import java.util.Stack;
+
+    class UseCase5{
 
     public static void main(String[] args) {
 
         // Declare and initialize the input string.
-        String input = "radar";
+        String input = "noon";
 
-        // Convert the string into a character array.
-        char[] chars = input.toCharArray();
+        // Create a Stack to store characters.
+        Stack<Character> stack = new Stack<>();
 
-        // Initialize pointer at the beginning.
-        int start = 0;
-
-        // Initialize pointer at the end.
-        int end = chars.length - 1;
+        // Push each character of the string into the stack.
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
         // Assume palindrome initially.
         boolean isPalindrome = true;
 
-        // Continue comparison until pointers cross.
-        while (start < end) {
-            // Compare characters at the current pointers
-            if (chars[start] != chars[end]) {
+        // Iterate again through original string.
+        for (char c : input.toCharArray()) {
+            // Pop character from stack (this will be in reverse order)
+            char reversedChar = stack.pop();
+
+            // Compare original character with the popped character
+            if (c != reversedChar) {
                 isPalindrome = false;
-                break; // Exit loop if a mismatch is found
+                break;
             }
-            // Move pointers towards the center
-            start++;
-            end--;
         }
 
         // Display the result
