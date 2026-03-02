@@ -1,41 +1,41 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
-    class UseCase6{
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-    public static void main(String[] args) {
 
-        // Define the input string to validate
-        String input = "civic";
+        class UseCase7 {
 
-        // Create a Queue to store characters in FIFO order
-        Queue<Character> queue = new LinkedList<>();
 
-        // Create a Stack to store characters in LIFO order
-        Stack<Character> stack = new Stack<>();
+            public static void main(String[] args) {
 
-        // Insert each character into both queue and stack
-        for (char c : input.toCharArray()) {
-            queue.add(c);
-            stack.push(c);
-        }
+                // Define the input string
+                String input = "refer";
 
-        // Flag to track palindrome status
-        boolean isPalindrome = true;
+                // Create a Deque to store characters
+                Deque<Character> deque = new ArrayDeque<>();
 
-        // Compare characters until the queue becomes empty
-        while (!queue.isEmpty()) {
-            // remove() gets the first character inserted (FIFO)
-            // pop() gets the last character inserted (LIFO)
-            if (!queue.remove().equals(stack.pop())) {
-                isPalindrome = false;
-                break;
+                // Add each character to the deque
+                for (char c : input.toCharArray()) {
+                    deque.addLast(c);
+                }
+
+                // Flag to track palindrome result
+                boolean isPalindrome = true;
+
+                // Continue comparison while more than one element exists
+                while (deque.size() > 1) {
+                    // Remove from front and back and compare
+                    char first = deque.removeFirst();
+                    char last = deque.removeLast();
+
+                    if (first != last) {
+                        isPalindrome = false;
+                        break;
+                    }
+                }
+
+                // Display the result
+                System.out.println("Input : " + input);
+                System.out.println("Is Palindrome? : " + isPalindrome);
             }
         }
-
-        // Display the result
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
-    }
-}
