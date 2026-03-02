@@ -1,23 +1,22 @@
-
-    class UseCase9 {
+    class UseCase10{
     public static void main(String[] args) {
-        String input = "madam"; //
-        boolean result = check(input, 0, input.length() - 1); //
+        String input = "A man a plan a canal Panama";
+
+        // Normalization: Remove non-alphanumeric characters and lowercase.
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        boolean isPalindrome = true;
+
+        // Compare characters from both ends.
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            // Compare symmetric characters.
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
-    }
-
-    private static boolean check(String s, int start, int end) {
-        // Base case: All characters matched or single character left
-        if (start >= end) {
-            return true;
-        }
-        // Base case: Mismatch found
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-        // Recursive call moving inward
-        return check(s, start + 1, end - 1);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
